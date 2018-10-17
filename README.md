@@ -2,6 +2,17 @@
 
 ## GitBook简介
 
+GitBook是一个命令行工具（和Node.js库），用GitHub / Git和Markdown（或AsciiDoc）来编排精美的书籍。GitBook既可以在您的计算机上构建本地书籍，也可以在legacy.gitbook.com上托管它们。
+
+* 基础功能：新建、编辑、配置书籍（包括设置书籍主题、集成GitHub、绑定域名等）
+* 高级功能：
+
+       1. 个性化配置：配置book.json，对书本信息进行设置
+
+       2. 插件：gitbook提供了很多实用的插件，对书本格式进行设置
+
+GitBook使用手册：[http://www.chengweiyang.cn/gitbook/customize/book.json.html](http://www.chengweiyang.cn/gitbook/customize/book.json.html)
+
 ## GitBook安装
 
 ### 搭建GitBook环境
@@ -26,7 +37,7 @@
 
 ### GitBook绑定GitHub
 
-创建文章后，点击页面右上角publish，弹出框需要填入Git仓库的https地址
+* 创建文章后，点击页面右上角publish，弹出框需要填入Git仓库的https地址
 
-
+详细链接：[https://segmentfault.com/a/1190000011440899](https://segmentfault.com/a/1190000011440899)
 
