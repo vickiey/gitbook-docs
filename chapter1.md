@@ -27,11 +27,11 @@ GitBook使用手册：[http://www.chengweiyang.cn/gitbook/customize/book.json.ht
 
 ### 基本使用方式
 
-#### 使用命令创建基本GitBook
+##### 使用命令创建基本GitBook
 
-#### 使用网页在线编辑器创建、编辑GitBook
+##### 使用网页在线编辑器创建、编辑GitBook
 
-#### 安装GitBook可视化编写工具（推荐）
+##### 安装GitBook可视化编写工具（推荐）
 
 * 安装后运行，首页选择右下角灰字do that later（因为翻墙的原因，这里无法通过login绑定GitHub，后面介绍如何绑定）
 * 点击“+NewBook”，新建书本
@@ -50,8 +50,7 @@ GitBook使用手册：[http://www.chengweiyang.cn/gitbook/customize/book.json.ht
 ### 未完待续
 
 * 自定义域名
-
-
+* gitbook相关功能
 
 
 
