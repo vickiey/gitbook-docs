@@ -2,8 +2,6 @@
 
 ## GitBook简介
 
-
-
 ## GitBook安装
 
 ### 搭建GitBook环境
@@ -18,19 +16,17 @@
 
 ### 安装GitBook可视化编写工具
 
-* 下载后打开即可运行
-* 下载地址：[https://legacy.gitbook.com/editor](https://legacy.gitbook.com/editor)
-* 安装后新建书本：[https://www.jianshu.com/p/cf4989c20bd8](https://www.jianshu.com/p/cf4989c20bd8)
+* 安装后运行，首页选择右下角灰字do that later（因为翻墙的原因，这里无法通过login绑定GitHub，后面介绍如何绑定）
+* 点击“+NewBook”，新建书本
+* 点击“+Add an article”，新建文章
 
-安装后运行，首页选择do that later（因为翻墙的原因，这里无法通过login绑定GitHub，后面介绍如何绑定）
+下载地址：[https://legacy.gitbook.com/editor](https://legacy.gitbook.com/editor)
 
-![](/assets/import0.png)
+教程详细链接：[https://www.jianshu.com/p/cf4989c20bd8](https://www.jianshu.com/p/cf4989c20bd8)
 
-点击“+NewBook”，新建书本
+### GitBook绑定GitHub
 
-![](/assets/import.png)
-
-
+创建文章后，点击页面右上角publish，弹出框需要填入Git仓库的https地址
 
 
 
