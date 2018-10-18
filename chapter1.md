@@ -54,8 +54,6 @@ GitBook使用手册：[http://www.chengweiyang.cn/gitbook/customize/book.json.ht
 
 详细链接：[https://jingyan.baidu.com/album/335530daf86c3b19cb41c3f3.html?picindex=4](https://jingyan.baidu.com/album/335530daf86c3b19cb41c3f3.html?picindex=4)
 
-
-
 ### 未完待续
 
 * gitbook相关功能：下载PDF（插件）、书籍的目录管理（summary.md配置）
