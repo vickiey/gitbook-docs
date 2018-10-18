@@ -47,10 +47,18 @@ GitBook使用手册：[http://www.chengweiyang.cn/gitbook/customize/book.json.ht
 
 详细链接：[https://segmentfault.com/a/1190000011440899](https://segmentfault.com/a/1190000011440899)
 
+### 自定义域名
+
+* 在setting中设置domain选项
+* 在域名服务商网站上添加解析
+
+详细链接：[https://jingyan.baidu.com/album/335530daf86c3b19cb41c3f3.html?picindex=4](https://jingyan.baidu.com/album/335530daf86c3b19cb41c3f3.html?picindex=4)
+
+
+
 ### 未完待续
 
-* 自定义域名
-* gitbook相关功能
+* gitbook相关功能：下载PDF（插件）、书籍的目录管理（summary.md配置）
 
 
 
