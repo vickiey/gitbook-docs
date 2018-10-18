@@ -1,0 +1,13 @@
+{
+    "title": "GitBook调研",
+    "description": "GitBook 调研与测试",
+    "author": "yusheng",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+	"plugins": [ "github" ],
+	"pluginsConfig": {
+        "github": {
+            "url": "https://github.com/vickiey/gitbook-docs"
+        }
+    }
+}
