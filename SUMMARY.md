@@ -2,13 +2,11 @@
 
 * [Introduction](README.md)
 * [GitBook调研](chapter1.md)
+   ** [test1](test1.md)
 * [hello](hello.md)
 
-\# Summary
 
-\* \[Introduction\]\(README.md\)
 
-\* \[test1\]\(test1.md\)
 
 \* \[test2\]\(test2.md\)
 
