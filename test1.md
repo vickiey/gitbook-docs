@@ -40,8 +40,6 @@ rm -rf ~/.gitbook
 
 教程详细链接：[https://www.jianshu.com/p/cf4989c20bd8](https://www.jianshu.com/p/cf4989c20bd8)
 
-
-
 **SUMMARY.md文档**
 
 该配置文档存放gitbook目录，如果要使上传的文档显示，必须将其加入该配置文档中
@@ -56,19 +54,20 @@ rm -rf ~/.gitbook
     * [Markdown 语法](readme/markdown.md)
 ```
 
-
-
 ## 文档贡献方法
 
 * 创建新分支，比如`feature/todo_demo`，然后在对应的目录中添加 markdown 文档\(如果不清楚放在哪个目录，请咨询自己的组长\)。
 
 * 添加自己为[贡献者](http://music-rtfm.hz.netease.com/frontend-book/contributors.html)
+
 * 文档编写完后，创建`merge request`，具体操作步骤和如下：
   * 合并的目标分支（target branch）选择`master`。
   * 在描述（Description）区域中，建议**@至少两名 Review 人员**。
   * 合并负责人（Assignee）统一选择自己的组长。
   * 虽然后续会有邮件通知，建议还是通过泡泡或者其他渠道通知相关 Review 人员和合并负责人，告诉他们要及时审阅。
   * 合并负责人确定文档无误后，合并请求，至此，文档正式上线。
+
+## gitbook调研报告
 
 
 
