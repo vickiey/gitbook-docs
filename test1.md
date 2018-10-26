@@ -1,104 +1,124 @@
-## 一.该工程未接入性能环境
+校园红人压测需求---[校园红人计划](http://doc.hz.netease.com/pages/viewpage.action?pageId=157327463)
 
-## 1.添加性能环境配置
+需求详情：
 
-**（1）接入配置中心、故障注入（接口人：包杨）**
+![](/assets/1-1.png)
 
-* 接入最新版配置中心、接入故障注入，参见wiki链接：[应用接入步骤及注意事项](http://doc.hz.netease.com/pages/viewpage.action?pageId=99649572#id-%E6%95%85%E9%9A%9C%E6%BC%94%E7%BB%83%E5%B9%B3%E5%8F%B0%E6%95%85%E9%9A%9C%E7%B1%BB%E5%9E%8B%E5%AE%9A%E4%B9%89%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8F%8F%E8%BF%B0-%E5%9B%9B%E3%80%81%E5%BA%94%E7%94%A8%E6%8E%A5%E5%85%A5%E6%AD%A5%E9%AA%A4%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9)
-* 接入后在配置中心加上配置项
+1.     确定需求
 
-**（2）环境属性配置迁入配置中心（接口人：汪建伟）**
+（1）     确定要压测的目的
 
- 配置中心：[https://music-config.hz.netease.com](https://music-config.hz.netease.com/)
+* redis代替mongo优化效果
+* 业务接口性能拐点
 
-* 中间件配置迁移到配置中心，规范参见：[http://doc.hz.netease.com/pages/viewpage.action?pageId=127406210](http://doc.hz.netease.com/pages/viewpage.action?pageId=127406210)
+（2）     确定要压测的接口
 
-* dao改造支持配置中心，参见：[http://doc.hz.netease.com/pages/viewpage.action?pageId=130241968](http://doc.hz.netease.com/pages/viewpage.action?pageId=130241968)
+此次压测接口是获取校园红人接口（api/nearby/campusstar/get）和redis搜索能力测试接口（/api/redis/geo/test）
 
-* 性能环境配置，参见：[http://doc.hz.netease.com/pages/viewpage.action?pageId=130237013](http://doc.hz.netease.com/pages/viewpage.action?pageId=130237013)
+2.     明确方案
 
-**（3）升级RPC 版本（接口人：薛广顺）**
+根据压测需求，设计压测方案。
 
-* Rpc 升级到4.2.5以上版本，以便支持rpc管控平台，方便定位
+（1）     压测范围与目标
 
-* 升级文档，参见：[http://doc.hz.netease.com/pages/viewpage.action?pageId=111947223](http://doc.hz.netease.com/pages/viewpage.action?pageId=111947223)
+l  redis的搜索处理能力
 
-* 如果接入正常，[http://music-rpcadmin.igame.163.com/admin/apps](http://music-rpcadmin.igame.163.com/admin/apps)，可以搜索到相关应用rpc信息
+l  压力测试，检测方案在峰值流量时的表现，以及所能承受的最大负载。
 
-**（4）接入日志平台（接口人：晁涛）**
+| **压测场景** | **接口信息** | 方法 | 参数 |
+| :--- | :--- | :--- | :--- |
+| redis搜索 | /api/redis/geo/test | get | 经度：lon、纬度：lat、搜索范围：radius |
+| 单机处理能力 | api/nearby/campusstar/get | post | 经度：lon、纬度：lat |
 
- 日志平台：[http://music-pylon.hz.netease.com/cmslog/](http://music-pylon.hz.netease.com/cmslog/)
 
-* 接入文档：[http://doc.hz.netease.com/pages/viewpage.action?pageId=110538247](http://doc.hz.netease.com/pages/viewpage.action?pageId=110538247)
-* 产品使用说明：[http://doc.hz.netease.com/pages/viewpage.action?pageId=121158047](http://doc.hz.netease.com/pages/viewpage.action?pageId=121158047)
-* 如果接入正常，验证 logs/mlog/${[app.name](http://app.name/)}.log 日志是否正常输出
 
-**（5）接入pylon（接口人：郭元华）**
+（2）     熟悉被测系统，整理调用链路图，如下：
 
-* 接入文档：[http://doc.hz.netease.com/pages/viewpage.action?pageId=94089227](http://doc.hz.netease.com/pages/viewpage.action?pageId=94089227)
+![](/assets/1-2.png)
 
-* 如果接入正常，[http://music-tracelog.hz.netease.com/trace/app](http://music-tracelog.hz.netease.com/trace/app)可搜索到相关应用；测试环境看看本地/home/appops/logs/trace/trace.log是否存在
+（3）压测风险分析
 
-**（6）应用监控接入哨兵（接口人：马宏展）**
+线下压测使用新申请的redis，压测完成后，清理数据。ddb保存红人相关数据在测试库中，可以不删除。
 
- 哨兵地址：[https://nss.netease.com](https://nss.netease.com/)
+（4）性能测试方案编写
 
-* 自动接入哨兵监控的可参考下面的地址（如果发现性能环境没有自动接入哨兵监控可参考修改）：
-  [Java应用监控和配置中心接入流程\#premain2.1.0jar%E5%8C%85%E5%8D%87%E7%BA%A7](http://doc.hz.netease.com/pages/viewpage.action?pageId=108936020#Java%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7%E5%92%8C%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E6%8E%A5%E5%85%A5%E6%B5%81%E7%A8%8B-premain2.1.0jar%E5%8C%85%E5%8D%87%E7%BA%A7)
 
-* 如果接入正常，登陆哨兵系统，进入应用，查看JVM、JavaMethod、music\_rep\_rpc 这个三个监控项数据正常收集并展示正确。
 
-**（7）应用接入nginx（接口人：念杰）**
+3.压测准备
 
-1、Nginx 机器所在地址：[music24.photo.163.org](http://music24.photo.163.org/)，需要申请appops权限，sudo -iu appops
+（1）工具—平台
 
-2、性能测试环境域名：overmind新建环境时的域名，配置文件路径 /etc/nginx/sites-enabled/qa-\*.perf-mmuisc，这个域名的配置，统一在这里维护
+NEI（[https://nei.netease.com](https://nei.netease.com/)）：查看接口信息
 
-![](/assets/2-4-1.png)
+overmind（[http://overmind.hz.netease.com/env/env\_list](http://overmind.hz.netease.com/env/env_list)）：环境搭建
 
-3、现在性能测试环境有些配置是之前从功能（测试）环境拷贝过来，有的配置可能还没改，有需要接入nginx 的，请注意检查。
+PTP（[http://perf.hz.netease.com](http://perf.hz.netease.com/)）：执行压测
 
-4. 测试配置是否正确： sudo /etc/init.d/nginx configtest
+（2）数据准备
 
-5. 如配置无问题，执行重启：sudo /etc/init.d/nginx reload
+在给定经纬度范围内，随机生成10W用户的经纬度信息，以CSV文件形式保存
 
-6. 如配置有问题，查看具体错误位置： sudo /usr/sbin/nginx -t
+（3）机器准备
 
-**（8）代码整理**
+中间件申请：redis
 
-**无论性能环境是不是部署了这个应用，都要改成性能环境约定的key（ 添加perf 标识）**
+压测机：
 
-老模板将性能环境配置写入perf文件，如图\(1\)；新模板将性能环境配置写入perf文件，如图（2）。
+[hzbdg-qa-app-001.server.163.org](http://hzbdg-qa-app-001.server.163.org/)
 
-![](/assets/2-4-2-1.png)
+[hzbdg-qa-app-002server.163.org](http://hzbdg-qa-app-001.server.163.org/)
 
-![](/assets/2-4-2.png)
+[hzbdg-qa-app-003.server.163.org](http://hzbdg-qa-app-001.server.163.org/)
 
- 图（1）图（2）
+[hzbdg-qa-app-004.server.163.org](http://hzbdg-qa-app-001.server.163.org/)
 
-2.overmind部署调试
+[hzbdg-qa-app-005.server.163.org](http://hzbdg-qa-app-001.server.163.org/)
 
-注：性能环境分为性能测试环境和性能回归环境，开发如有压测需求，只需在性能测试环境创建环境即可。
+（4）环境搭建
 
-![](/assets/2-4-3.png)
+在overmind上面搭建环境。步骤如下：
 
-**（1）新建性能测试环境**
+a.打开overmind平台：[http://overmind.hz.netease.com/env/env\_list](http://overmind.hz.netease.com/env/env_list)
 
-![](/assets/2-4-4.png)
+![](/assets/1-3.png)
 
-![](/assets/2-4-5.png)
+![](/assets/1-4.png)
 
-**（2）添加/删除应用**
 
-![](/assets/2-4-6.png)
 
-**（3）应用接入batch**
 
-如果部署的应用接入了batch，需要在搭建环境的时候，部署batch应用。
 
-![](/assets/2-4-7.png)
+4.开始压测
 
-二.该工程已接入性能环境
+打开PTP平台：[http://perf.hz.netease.com/](http://perf.hz.netease.com/)
 
-直接在overmind上部署即可
+操作步骤如下：
+
+（1）新建
+
+![](/assets/1-5.png)![](/assets/1-6.png)![](/assets/1-8.png)![](/assets/1-7.png)
+
+![](/assets/1-9.png)
+
+![](/assets/1-10.png)![](/assets/1-11.png)
+
+
+
+提交即可
+
+（3）查看结果
+
+![](/assets/1-12.png)
+
+（4）  增加并发量，直至性能拐点
+
+* 重建轮次
+
+![](/assets/1-13.png)
+
+* 性能指标分析图
+ 
+  ![](/assets/1-14.png)
+
+5.分析压测结果并优化
 
