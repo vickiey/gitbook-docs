@@ -1,6 +1,10 @@
 # 分析工具 {#id-第二节java诊断工具-分析工具}
 
-前面几个小节分别从内存、线程等方面介绍了java应用的性能分析工具，这些工具普遍都只专注于性能的一个方面，并不能满足一站式的全面的性能监控和分析的需求，而VisualVm和Jconsole就是jdk中自带的可视化分析工具。两者功能相近，详细的使用过程可以参考[visualvm](http://www.ibm.com/developerworks/cn/java/j-lo-visualvm)和[jconsole](http://docs.oracle.com/javase/6/docs/technotes/guides/management/jconsole.html)，下面只简单介绍下它们各自的特色。 
+前面几个小节分别从内存、线程等方面介绍了java应用的性能分析工具，这些工具普遍都只专注于性能的一个方面，并不能满足一站式的全面的性能监控和分析的需求，而VisualVm和Jconsole就是jdk中自带的可视化分析工具
+
+
+
+。两者功能相近，详细的使用过程可以参考[visualvm](http://www.ibm.com/developerworks/cn/java/j-lo-visualvm)和[jconsole](http://docs.oracle.com/javase/6/docs/technotes/guides/management/jconsole.html)，下面只简单介绍下它们各自的特色。 
 
 ## VisualVm {#id-第二节java诊断工具-VisualVm}
 
