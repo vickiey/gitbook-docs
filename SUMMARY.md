@@ -6,4 +6,5 @@
 * [hello](hello.md)
 * [test2](test2.md)
 * [test4](test4.md)
+* [test3](test3.md)
 
